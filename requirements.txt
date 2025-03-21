@@ -1,0 +1,27 @@
+# Core dependencies
+openai
+python-dotenv
+pyttsx3
+SpeechRecognition
+pyaudio
+keyboard
+langchain
+langchain-openai
+faiss-cpu
+pillow
+
+# Voice processing
+gtts
+pydub
+
+# Web and data handling
+requests
+beautifulsoup4
+
+# System utilities
+psutil
+
+# Optional document processing
+python-docx
+PyPDF2
+tiktoken
