@@ -294,7 +294,7 @@ def process_command(self, command):
         response = self.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are Serena, a helpful female seductive voice assistant. Analyze the command and respond with a JSON object containing: category (web_search/system_control/application/media_control/voice_typing/information), action, and parameters."},
+                {"role": "system", "content": "You are Serena, a helpful female voice assistant. Analyze the command and respond with a JSON object containing: category (web_search/system_control/application/media_control/voice_typing/information), action, and parameters."},
                 {"role": "user", "content": command}
             ]
         )
