@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serena AI Assistant - Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .demo-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .demo-gif {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 100%;
+            height: auto;
+        }
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        h2 {
+            color: #6e8efb;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        h3 {
+            color: #a777e3;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        pre {
+            background-color: #f7f7f7;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid #6e8efb;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: #a777e3;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        .requirements {
+            background-color: #f0f7ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .requirements ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Serena AI Assistant</h1>
+        <p class="tagline">A personal voice-activated assistant with customizable voice options and multiple capabilities</p>
+    </header>
+
+    <div class="demo-container">
+        <img src="3.gif" alt="Serena AI Assistant Demo" class="demo-gif">
+    </div>
+
+    <section>
+        <h2>Project Overview</h2>
+        <p>Serena is a desktop-based AI assistant with voice recognition capabilities that can perform various tasks through voice commands. The application uses a combination of speech recognition, text-to-speech, and natural language processing to understand and respond to user requests. Serena can perform web searches, control system functions, open applications, control media playback, and provide information on a variety of topics.</p>
+        
+        <div class="requirements">
+            <h3>Key Technologies</h3>
+            <ul>
+                <li><strong>Python:</strong> Core programming language</li>
+                <li><strong>Tkinter:</strong> GUI framework</li>
+                <li><strong>SpeechRecognition:</strong> For voice command recognition</li>
+                <li><strong>OpenAI API:</strong> For natural language understanding and response generation</li>
+                <li><strong>gTTS and pyttsx3:</strong> For text-to-speech capabilities</li>
+                <li><strong>PIL/Pillow:</strong> For handling animated GIFs in the interface</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Project Architecture</h2>
+        <p>The project consists of three main files:</p>
+        
+        <h3>1. main.py</h3>
+        <p>This is the entry point of the application that initializes the Tkinter window and starts the Serena Assistant.</p>
+        <pre>
+import tkinter as tk
+from serena_assistant import SerenaAssistant
+
+def main():
+    root = tk.Tk()
+    app = SerenaAssistant(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
+        </pre>
+        
+        <h3>2. serena_assistant.py</h3>
+        <p>This is the main class that handles the assistant's functionality, including the GUI, voice recognition, command processing, and response generation.</p>
+        
+        <h3>3. utils.py</h3>
+        <p>Contains utility classes, particularly the TextToSpeech class that handles different text-to-speech options (Google TTS and local pyttsx3).</p>
+    </section>
+
+    <section>
+        <h2>Core Features</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-title">Voice Recognition</div>
+                <p>Serena listens for voice commands through the device's microphone and converts speech to text using Google's speech recognition service.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Multi-Language Support</div>
+                <p>The assistant can speak in both English (Indian accent) and Hindi, allowing users to switch between languages with simple voice commands.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Customizable Voice</div>
+                <p>Users can choose between online (Google TTS) and local (pyttsx3) voice engines for the assistant's responses.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Web Searches</div>
+                <p>Serena can perform web searches by opening the default browser with relevant search queries.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">System Control</div>
+                <p>The assistant can control system functions like shutdown and restart operations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Application Management</div>
+                <p>Serena can open applications on request, making it easier to access frequently used programs.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Media Controls</div>
+                <p>Control media playback with voice commands for play, pause, next track, and previous track.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Voice Typing</div>
+                <p>The assistant can listen and type what the user says, acting as a voice-to-text tool.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">Information Retrieval</div>
+                <p>Leveraging OpenAI's GPT-3.5 model, Serena can provide information on a wide range of topics.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Detailed Component Analysis</h2>
+        
+        <h3>SerenaAssistant Class</h3>
+        <p>The SerenaAssistant class is the heart of the application, coordinating all components and features:</p>
+        
+        <h4>Initialization</h4>
+        <p>The initialization process sets up all necessary components:</p>
+        <pre>
+def __init__(self, root):
+    self.root = root
+    self.setup_window()
+    self.setup_voice()
+    self.setup_recognizer()
+    self.setup_openai()
+    self.setup_personality()
+    self.create_gui()
+        </pre>
+        <p>Each setup method handles a specific aspect of the assistant's functionality:</p>
+        <ul>
+            <li><code>setup_window()</code>: Configures the application window and styles</li>
+            <li><code>setup_voice()</code>: Initializes the text-to-speech engine</li>
+            <li><code>setup_recognizer()</code>: Configures the speech recognition component</li>
+            <li><code>setup_openai()</code>: Sets up the OpenAI API client for natural language processing</li>
+            <li><code>setup_personality()</code>: Defines the assistant's responses for various situations</li>
+            <li><code>create_gui()</code>: Constructs the graphical user interface</li>
+        </ul>
+        
+        <h4>Voice Recognition System</h4>
+        <p>Voice recognition is handled by a dedicated listening thread that captures audio input, processes it, and converts it to text:</p>
+        <pre>
+def listen_loop(self):
+    while self.listening:
+        try:
+            with sr.Microphone() as source:
+                self.recognizer.adjust_for_ambient_noise(source, duration=0.5)
+                self.log_message("Listening...")
+                try:
+                    audio = self.recognizer.listen(source, timeout=5, phrase_time_limit=5)
+                    command = self.recognizer.recognize_google(audio).lower()
+                    if command:
+                        self.log_message(f"You: {command}")
+                        self.process_command(command)
+                except sr.WaitTimeoutError:
+                    continue
+                except sr.UnknownValueError:
+                    self.log_message(random.choice(self.error_responses))
+                except Exception as e:
+                    self.log_message(f"Error: {str(e)}")
+        except Exception as e:
+            self.log_message(f"Listening error: {str(e)}")
+            time.sleep(1)
+        </pre>
+        
+        <h4>Command Processing</h4>
+        <p>The command processing system uses OpenAI's GPT-3.5 model to understand user intents and categorize them:</p>
+        <pre>
+def process_command(self, command):
+    try:
+        # Handle language switching commands directly
+        if any(phrase in command.lower() for phrase in ["switch to hindi", "speak in hindi", "use hindi"]):
+            self.tts.switch_to_hindi()
+            self.say("अब मैं हिंदी में बोलूंगी")
+            return
+        # Other command handling...
+        
+        # Use OpenAI to classify the command
+        response = self.client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are Serena, a helpful female seductive voice assistant. Analyze the command and respond with a JSON object containing: category (web_search/system_control/application/media_control/voice_typing/information), action, and parameters."},
+                {"role": "user", "content": command}
+            ]
+        )
+        result = json.loads(response.choices[0].message.content)
+        category = result.get('category')
+        parameters = result.get('parameters', {})
+        
+        # Execute the appropriate action based on category
+        if category == 'web_search':
+            self.web_search(command)
+        elif category == 'system_control':
+            self.system_control(command)
+        # Other categories...
+        
+    except Exception as e:
+        self.log_message(f"Command processing error: {str(e)}")
+        self.say("I encountered an error processing that command. Please try again.")
+        </pre>
+        
+        <h4>Text-to-Speech System</h4>
+        <p>The TextToSpeech class in utils.py handles voice output with support for multiple engines and languages:</p>
+        <pre>
+class TextToSpeech:
+    def __init__(self, rate=150, volume=1.0, use_indian_english=True):
+        self.use_gtts = True
+        self.use_indian_english = use_indian_english
+        self.engine = pyttsx3.init()
+        self.engine.setProperty('rate', rate)
+        self.engine.setProperty('volume', volume)
+        voices = self.engine.getProperty('voices')
+        if len(voices) > 1:
+            self.engine.setProperty('voice', voices[1].id)
+        self.speak_lock = threading.Lock()
+        language = "Indian English" if use_indian_english else "Hindi"
+        print(f"Text-to-speech initialized using {language}")
+        </pre>
+        <p>This class supports:</p>
+        <ul>
+            <li>Speaking in Indian English or Hindi</li>
+            <li>Using Google TTS (online) or pyttsx3 (local) voice engines</li>
+            <li>Threaded speech output to prevent UI freezing</li>
+            <li>Automatic fallback if one method fails</li>
+        </ul>
+        
+        <h4>Graphical User Interface</h4>
+        <p>The GUI is built using Tkinter and features:</p>
+        <ul>
+            <li>A status label showing the current state (Ready, Listening)</li>
+            <li>A scrollable text area displaying conversation history</li>
+            <li>A button to toggle listening mode</li>
+            <li>An animated GIF for visual feedback</li>
+        </ul>
+        <pre>
+def create_gui(self):
+    self.main_frame = ttk.Frame(self.root, style='Custom.TFrame', padding="20")
+    self.main_frame.grid(row=0, column=0, sticky="nsew")
+    # Configure grid weights...
+    
+    # Status label
+    self.status_var = tk.StringVar(value="Ready")
+    self.status_label = ttk.Label(
+        self.main_frame, 
+        textvariable=self.status_var,
+        style='Status.TLabel'
+    )
+    self.status_label.grid(row=0, column=0, pady=(0, 10), sticky="ew")
+    
+    # History text area
+    self.history_frame = ttk.Frame(self.main_frame)
+    self.history_frame.grid(row=1, column=0, sticky="nsew")
+    # Configure text area...
+    
+    # Button to control listening
+    self.button_frame = ttk.Frame(self.main_frame)
+    self.button_frame.grid(row=2, column=0, pady=(10, 0), sticky="ew")
+    self.start_button = ttk.Button(
+        self.button_frame,
+        text="Start Listening",
+        command=self.toggle_listening,
+        style='Custom.TButton'
+    )
+    self.start_button.grid(row=0, column=1)
+    
+    # Animated GIF
+    self.gif_label = tk.Label(self.main_frame)
+    self.gif_label.grid(row=3, column=0, pady=10)
+    self.gif_path = "gif/3.gif"
+    self.gif = Image.open(self.gif_path)
+    self.gif_frames = [ImageTk.PhotoImage(img) for img in ImageSequence.Iterator(self.gif)]
+    # Animation setup...
+        </pre>
+    </section>
+
+    <section>
+        <h2>Functional Capabilities</h2>
+        
+        <h3>Web Search</h3>
+        <p>Serena can search the web by extracting search terms from the command and opening a browser:</p>
+        <pre>
+def web_search(self, query):
+    search_terms = query.replace('search', '').replace('google', '').strip()
+    self.say(f"Searching for {search_terms}")
+    webbrowser.open(f"https://www.google.com/search?q={search_terms}")
+        </pre>
+        
+        <h3>System Control</h3>
+        <p>The assistant can manage system operations like shutdown and restart:</p>
+        <pre>
+def system_control(self, command):
+    if 'shutdown' in command:
+        self.say("Preparing to shut down the computer...")
+        os.system('shutdown /s /t 60' if platform.system() == "Windows" else 'shutdown -h +1')
+    elif 'restart' in command:
+        self.say("Preparing to restart the computer...")
+        os.system('shutdown /r /t 60' if platform.system() == "Windows" else 'shutdown -r +1')
+    elif 'cancel shutdown' in command:
+        self.say("Canceling shutdown...")
+        os.system('shutdown /a' if platform.system() == "Windows" else 'shutdown -c')
+        </pre>
+        
+        <h3>Application Management</h3>
+        <p>Serena can open applications across different operating systems:</p>
+        <pre>
+def open_application(self, app_name):
+    try:
+        if platform.system() == "Windows":
+            os.startfile(app_name)
+        else:
+            subprocess.Popen([app_name])
+        self.say(f"Opening {app_name}")
+    except Exception as e:
+        self.say(f"Sorry, I couldn't open {app_name}")
+        </pre>
+        
+        <h3>Media Control</h3>
+        <p>The assistant can control media playback using keyboard shortcuts:</p>
+        <pre>
+def media_control(self, command):
+    if 'play' in command or 'pause' in command:
+        keyboard.press_and_release('play/pause media')
+    elif 'next' in command:
+        keyboard.press_and_release('next track')
+    elif 'previous' in command:
+        keyboard.press_and_release('previous track')
+        </pre>
+        
+        <h3>Voice Typing</h3>
+        <p>Serena can listen to what the user says and type it using the keyboard module:</p>
+        <pre>
+def voice_typing(self):
+    self.say("Voice typing mode enabled. Speak your text.")
+    try:
+        with sr.Microphone() as source:
+            audio = self.recognizer.listen(source, timeout=10)
+            text = self.recognizer.recognize_google(audio)
+            keyboard.write(text)
+            self.say("Text typed successfully")
+    except Exception as e:
+        self.say("Sorry, I couldn't type that.")
+        </pre>
+        
+        <h3>Information Retrieval</h3>
+        <p>The assistant can provide information on various topics using OpenAI's GPT model:</p>
+        <pre>
+def get_information(self, query):
+    try:
+        response = self.client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are Serena, a female personal friendly and interactive AI assistant. Respond to the following user input in a conversational and engaging manner. Provide comprehensive and very short but concise information about the query."},
+                {"role": "user", "content": query}
+            ]
+        )
+        answer = response.choices[0].message.content
+        self.say(answer)
+    except Exception as e:
+        self.say("I'm sorry, I couldn't find that information.")
+        </pre>
+    </section>
+
+    <section>
+        <h2>Getting Started</h2>
+        
+        <h3>Requirements</h3>
+        <div class="requirements">
+            <ul>
+                <li>Python 3.7+</li>
+                <li>OpenAI API key (set as environment variable 'OPENAI_API_KEY')</li>
+                <li>Python packages:
+                    <ul>
+                        <li>tkinter</li>
+                        <li>speech_recognition</li>
+                        <li>openai</li>
+                        <li>pyttsx3</li>
+                        <li>gtts</li>
+                        <li>pydub</li>
+                        <li>pillow</li>
+                        <li>keyboard</li>
+                    </ul>
+                </li>
+                <li>A working microphone for voice input</li>
+                <li>Speakers for voice output</li>
+            </ul>
+        </div>
+        
+        <h3>Running the Application</h3>
+        <p>To run Serena AI Assistant:</p>
+        <ol>
+            <li>Ensure all dependencies are installed</li>
+            <li>Set your OpenAI API key as an environment variable</li>
+            <li>Run <code>python main.py</code> from the command line</li>
+            <li>Click "Start Listening" to begin giving voice commands</li>
+        </ol>
+        
+        <h3>Example Voice Commands</h3>
+        <ul>
+            <li>"Search for the latest technology news"</li>
+            <li>"Open notepad"</li>
+            <li>"Switch to Hindi"</li>
+            <li>"What is the capital of France?"</li>
+            <li>"Use Google voice"</li>
+            <li>"Play music"</li>
+            <li>"Enable voice typing"</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Serena AI Assistant - A personal voice-activated AI assistant project</p>
+    </footer>
+</body>
+</html>
